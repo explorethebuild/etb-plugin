@@ -15,5 +15,3 @@ commands:
     description: Setzt den Punkt der Detonation.
   stopdetonation:
     description: Stoppt die Denotation (bzw. den Timer dafür)
-  anklecuff:
-    description: Öffnet ein Fußfessel-Menü
