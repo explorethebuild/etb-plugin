@@ -1,7 +1,5 @@
 package dev.just.explorethebuild;
 
-import dev.just.explorethebuild.bettersleep.SleepEvent;
-import dev.just.explorethebuild.bettersleep.SleepRunnable;
 import dev.just.explorethebuild.elytra.commands.SetSpawnCommand;
 import dev.just.explorethebuild.elytra.listeners.BlockBreakListener;
 import dev.just.explorethebuild.elytra.listeners.EntityToggleGlideListener;
@@ -32,7 +30,6 @@ public final class Main extends JavaPlugin {
         // Plugin startup logic
         registerCommands();
         registerListeners();
-        SleepRunnable.main();
     }
 
     @Override
@@ -76,7 +73,6 @@ public final class Main extends JavaPlugin {
         pluginManager.registerEvents(new DamageBeforeStart(), this);
         pluginManager.registerEvents(new AntiMobSpawn(), this);
         pluginManager.registerEvents(new JoinListener(), this);
-        pluginManager.registerEvents(new SleepEvent(), this);
         pluginManager.registerEvents(new EntityToggleGlideListener(), this);
     }
 }
