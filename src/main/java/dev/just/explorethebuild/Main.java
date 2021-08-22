@@ -9,8 +9,6 @@ import dev.just.explorethebuild.elytra.teleportup.TeleportUp;
 import dev.just.explorethebuild.events.AntiMobSpawn;
 import dev.just.explorethebuild.events.DamageBeforeStart;
 import dev.just.explorethebuild.events.EndBlockListener;
-import dev.just.explorethebuild.events.anklecuff.AnkleCuffCommand;
-import dev.just.explorethebuild.events.anklecuff.AnkleCuffGUI;
 import dev.just.explorethebuild.events.countdown.Countdown;
 import dev.just.explorethebuild.events.countdown.commands.SetDetonationCommand;
 import dev.just.explorethebuild.events.countdown.commands.StopDetonationCommand;
@@ -72,7 +70,6 @@ public final class Main extends JavaPlugin {
         getCommand("settpup").setExecutor(new TeleportUp());
         getCommand("stopdetonation").setExecutor(new StopDetonationCommand());
         getCommand("setdetonation").setExecutor(new SetDetonationCommand());
-        getCommand("anklecuff").setExecutor(new AnkleCuffCommand());
     }
 
     private void registerListeners() {
@@ -87,6 +84,5 @@ public final class Main extends JavaPlugin {
         pluginManager.registerEvents(new JoinListener(), this);
         pluginManager.registerEvents(new SleepEvent(), this);
         pluginManager.registerEvents(new Countdown(), this);
-        pluginManager.registerEvents(new AnkleCuffGUI(), this);
     }
 }
