@@ -9,7 +9,9 @@ import org.bukkit.WorldBorder;
 public class ElytraSystem {
     public static Location getElytraSpawnPosition() {
         World world = Bukkit.getWorld(Config.getString("spawn.world"));
-        Location location = new Location(world, Config.getDouble("spawn.x.exact", 0), Config.getDouble("spawn.y.exact", 100), Config.getDouble("spawn.z.exact", 0));
+        Location location = new Location(world, Config.getDouble("spawn.x.exact", 0),
+                Config.getDouble("spawn.y.exact", 100),
+                Config.getDouble("spawn.z.exact", 0));
         return location;
     }
     public static void putElytraSpawnPosition(Location location) {
