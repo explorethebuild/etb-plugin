@@ -9,11 +9,11 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-#      - name: actions/setup-java@v2
-#        with:
-#          distribution: "adopt"
-#          java-version: "16"
-#      - name: Build using maven
+      - name: actions/setup-java@v2
+        with:
+          distribution: "adopt"
+          java-version: "16"
+      - name: Build using maven
 #        run: mvn clean package
 #      - uses: actions/upload-artifact@v2
 #        with:
