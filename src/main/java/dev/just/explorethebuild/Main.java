@@ -1,0 +1,92 @@
+package dev.just.explorethebuild;
+
+import dev.just.explorethebuild.bettersleep.SleepEvent;
+import dev.just.explorethebuild.bettersleep.SleepRunnable;
+import dev.just.explorethebuild.elytra.commands.SetSpawnCommand;
+import dev.just.explorethebuild.elytra.listeners.BlockBreakListener;
+import dev.just.explorethebuild.elytra.listeners.MoveListener;
+import dev.just.explorethebuild.elytra.teleportup.TeleportUp;
+import dev.just.explorethebuild.events.AntiMobSpawn;
+import dev.just.explorethebuild.events.DamageBeforeStart;
+import dev.just.explorethebuild.events.EndBlockListener;
+import dev.just.explorethebuild.events.anklecuff.AnkleCuffCommand;
+import dev.just.explorethebuild.events.anklecuff.AnkleCuffGUI;
+import dev.just.explorethebuild.events.countdown.Countdown;
+import dev.just.explorethebuild.events.countdown.commands.SetDetonationCommand;
+import dev.just.explorethebuild.events.countdown.commands.StopDetonationCommand;
+import dev.just.explorethebuild.start.commands.StartCommand;
+import dev.just.explorethebuild.status.commands.StatusCommand;
+import dev.just.explorethebuild.status.listeners.ChatListener;
+import dev.just.explorethebuild.status.listeners.JoinListener;
+import dev.just.explorethebuild.utils.Config;
+import org.bukkit.Bukkit;
+import org.bukkit.ChatColor;
+import org.bukkit.plugin.PluginManager;
+import org.bukkit.plugin.java.JavaPlugin;
+
+public final class Main extends JavaPlugin {
+
+    @Override
+    public void onLoad() {
+        Config.registerConfig();
+    }
+
+    @Override
+    public void onEnable() {
+        // Plugin startup logic
+        registerCommands();
+        registerListeners();
+        MoveListener.main();
+        SleepRunnable.main();
+        Countdown.main();
+    }
+
+    @Override
+    public void onDisable() {
+        // Plugin shutdown logic
+    }
+
+    public static String getErrorPrefix() {
+        return ChatColor.DARK_GRAY + "┃ " + ChatColor.DARK_RED + "ERROR" + ChatColor.DARK_GRAY + " » " + ChatColor.GRAY;
+    }
+    public static String getServerPrefix() {
+        return  ChatColor.DARK_GRAY + "┃ " + ChatColor.BLUE  + "Server" + ChatColor.DARK_GRAY + " » " + ChatColor.GRAY;
+    }
+    public static String getPrefix() {
+        return getServerPrefix();
+    }
+    public static String getPrefix(String name) {
+        return  ChatColor.DARK_GRAY + "┃ " + ChatColor.BLUE  + name + ChatColor.DARK_GRAY + " » " + ChatColor.GRAY;
+    }
+    public static String getNoPermission() {
+        return getErrorPrefix() + "Du hast keine Rechte für diesen Befehl";
+    }
+    public static String getNoPlayer() {
+        return getErrorPrefix() + "Du musst für diese Aktion ein Spieler sein";
+    }
+
+    private void registerCommands() {
+        getCommand("status").setExecutor(new StatusCommand());
+        getCommand("start").setExecutor(new StartCommand());
+        getCommand("setspawn").setExecutor(new SetSpawnCommand());
+        getCommand("settpup").setExecutor(new TeleportUp());
+        getCommand("stopdetonation").setExecutor(new StopDetonationCommand());
+        getCommand("setdetonation").setExecutor(new SetDetonationCommand());
+        getCommand("anklecuff").setExecutor(new AnkleCuffCommand());
+    }
+
+    private void registerListeners() {
+        PluginManager pluginManager = Bukkit.getPluginManager();
+        pluginManager.registerEvents(new StatusCommand(), this);
+        pluginManager.registerEvents(new ChatListener(), this);
+        pluginManager.registerEvents(new MoveListener(), this);
+        pluginManager.registerEvents(new BlockBreakListener(), this);
+        pluginManager.registerEvents(new EndBlockListener(), this);
+        pluginManager.registerEvents(new DamageBeforeStart(), this);
+        pluginManager.registerEvents(new AntiMobSpawn(), this);
+        pluginManager.registerEvents(new JoinListener(), this);
+        pluginManager.registerEvents(new SleepEvent(), this);
+        pluginManager.registerEvents(new Countdown(), this);
+        pluginManager.registerEvents(new AnkleCuffGUI(), this);
+    }
+}

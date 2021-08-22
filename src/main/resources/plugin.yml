@@ -1,0 +1,19 @@
+name: ExploreTheBuild
+version: ${project.version}
+main: dev.just.explorethebuild.Main
+api-version: 1.16
+commands:
+  status:
+    description: Setzt den Status eines Nutzers.
+  start:
+    description: Startet und stoppt das Event.
+  setspawn:
+    description: Setzt den Spawnpunkt.
+  settpup:
+    description: Setzt den Punkt fürs Teleportieren nach oben.
+  setdetonation:
+    description: Setzt den Punkt der Detonation.
+  stopdetonation:
+    description: Stoppt die Denotation (bzw. den Timer dafür)
+  anklecuff:
+    description: Öffnet ein Fußfessel-Menü
