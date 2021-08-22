@@ -2,6 +2,7 @@ name: Build spigot plugin
 on:
   push:
 
+
 jobs:
   build:
     runs-on: ubuntu-latest
