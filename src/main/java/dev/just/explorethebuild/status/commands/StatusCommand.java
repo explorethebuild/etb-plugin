@@ -2,12 +2,11 @@ package dev.just.explorethebuild.status.commands;
 
 import dev.just.explorethebuild.Main;
 import dev.just.explorethebuild.start.IsStarted;
+import dev.just.explorethebuild.status.CustomStatusManager;
 import dev.just.explorethebuild.status.StatusManager;
 import dev.just.explorethebuild.utils.ItemBuilder;
 import dev.just.explorethebuild.utils.JColors;
-import dev.just.explorethebuild.status.CustomStatusManager;
 import net.wesjd.anvilgui.AnvilGUI;
-import net.wesjd.anvilgui.AnvilGUI.Response;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.Material;

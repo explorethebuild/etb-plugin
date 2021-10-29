@@ -3,7 +3,6 @@ package dev.just.explorethebuild.status.listeners;
 import dev.just.explorethebuild.Main;
 import dev.just.explorethebuild.status.CustomStatusManager;
 import dev.just.explorethebuild.status.StatusManager;
-import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;

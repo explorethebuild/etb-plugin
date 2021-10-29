@@ -1,8 +1,6 @@
 package dev.just.explorethebuild.start.commands;
 
 import dev.just.explorethebuild.Main;
-import dev.just.explorethebuild.elytra.ElytraSystem;
-import dev.just.explorethebuild.start.IsStarted;
 import dev.just.explorethebuild.utils.Config;
 import net.md_5.bungee.api.ChatMessageType;
 import net.md_5.bungee.api.chat.TextComponent;
