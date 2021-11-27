@@ -31,9 +31,11 @@ public class MoveListener implements Listener {
     public void onMove(PlayerMoveEvent event) {
         if (!IsStarted.isStarted) return;
         if (isInSpawnAre(event.getPlayer().getLocation())) {
-            Player player = event.getPlayer();
-            player.setGliding(true);
-            playerFlying.add(player);
+            if (event.getPlayer().getFallDistance() > 0) {
+                Player player = event.getPlayer();
+                player.setGliding(true);
+                playerFlying.add(player);
+            }
         }
     }
 }
