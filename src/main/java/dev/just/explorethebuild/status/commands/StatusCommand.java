@@ -45,22 +45,6 @@ public class StatusCommand implements Listener, CommandExecutor {
         Inventory inv = Bukkit.createInventory(null, 9, ChatColor.GREEN + "Status wählen");
         UUID uuid = player.getUniqueId();
         ItemStack online = getItem(StatusManager.Status.ONLINE, statues.containsKey(uuid) && statues.get(uuid).equals(StatusManager.Status.ONLINE));
-        /**
-        if (statues.containsKey(uuid) && statues.get(uuid).equals(StatusManager.Status.ONLINE)) {
-            online = new ItemBuilder(Material.GREEN_DYE)
-                    .setName(ChatColor.GRAY + "ONLINE")
-                    .addLoreLine(JColors.AZURE + "Dies ist dein aktueller Status. ")
-                    .addUnsafeEnchantment(Enchantment.ARROW_DAMAGE, 1)
-                    .addItemFlag(ItemFlag.HIDE_ATTRIBUTES)
-                    .addItemFlag(ItemFlag.HIDE_ENCHANTS)
-                    .toItemStack();
-        } else {
-            online = new ItemBuilder(Material.GREEN_DYE)
-                    .addLoreLine(JColors.GREENYELLOW + "Klicke, um dies als deinen Status zu setzen. ")
-                    .setName(ChatColor.GRAY + "ONLINE")
-                    .toItemStack();
-        }
-         **/
         inv.setItem(0, online);
         inv.setItem(1, getItem(StatusManager.Status.AFK, statues.containsKey(uuid) && statues.get(uuid).equals(StatusManager.Status.AFK)));
         inv.setItem(2, getItem(StatusManager.Status.MINING, statues.containsKey(uuid) && statues.get(uuid).equals(StatusManager.Status.MINING)));
@@ -80,39 +64,33 @@ public class StatusCommand implements Listener, CommandExecutor {
             if (clickedItem.equals(getItem(StatusManager.Status.ONLINE, false))) {
                 CustomStatusManager.customStatues.remove(player.getUniqueId());
                 statues.put(uuid, StatusManager.Status.ONLINE);
-//                event.getInventory().setItem(0, getItem(StatusManager.Status.ONLINE, true));
                 player.openInventory(inventory(player));
                 changeStatus(player);
                 player.updateInventory();
             } else if (clickedItem.equals(getItem(StatusManager.Status.ONLINE, true))) {
                 statues.remove(uuid);
-//                event.getInventory().setItem(0, getItem(StatusManager.Status.ONLINE, false));
                 player.openInventory(inventory(player));
                 changeStatus(player);
                 player.updateInventory();
             } else if (clickedItem.equals(getItem(StatusManager.Status.AFK, false))) {
                 CustomStatusManager.customStatues.remove(player.getUniqueId());
                 statues.put(uuid, StatusManager.Status.AFK);
-//                event.getInventory().setItem(1, getItem(StatusManager.Status.AFK, true));
                 player.openInventory(inventory(player));
                 changeStatus(player);
                 player.updateInventory();
             } else if (clickedItem.equals(getItem(StatusManager.Status.AFK, true))) {
                 statues.remove(uuid);
-//                event.getInventory().setItem(1, getItem(StatusManager.Status.AFK, false));
                 player.openInventory(inventory(player));
                 changeStatus(player);
                 player.updateInventory();
             } else if (clickedItem.equals(getItem(StatusManager.Status.MINING, false))) {
                 CustomStatusManager.customStatues.remove(player.getUniqueId());
                 statues.put(uuid, StatusManager.Status.MINING);
-//                event.getInventory().setItem(2, getItem(StatusManager.Status.MINING, true));
                 player.openInventory(inventory(player));
                 changeStatus(player);
                 player.updateInventory();
             } else if (clickedItem.equals(getItem(StatusManager.Status.MINING, true))) {
                 statues.remove(uuid);
-//                event.getInventory().setItem(2, getItem(StatusManager.Status.MINING, false));
                 player.openInventory(inventory(player));
                 changeStatus(player);
                 player.updateInventory();
