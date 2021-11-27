@@ -32,7 +32,6 @@ public class StatusManager {
             return JColors.GRAY + "[" + JColors.BLUEVIOLET + "DISCORD" + JColors.GRAY + "] " + JColors.DARKSLATEGRAY + player.getName();
         } else if (status.equals(Status.TEAMSPEAK)) {
             return JColors.GRAY + "[" + ChatColor.of(new Color(22, 29, 43)) + "TEAMSPEAK" + JColors.GRAY + "] " + JColors.DARKSLATEGRAY + player.getName();
-//            #161d2b
         }
         return "Error: Mo status was correct DEBUG: " + status.toString();
     }
