@@ -106,7 +106,6 @@ public class StatusCommand implements Listener, CommandExecutor {
                 player.updateInventory();
             } else if (clickedItem.equals(getItem(StatusManager.Status.TEAMSPEAK, false))) {
                 CustomStatusManager.customStatues.remove(player.getUniqueId());
-                CustomStatusManager.customStatues.remove(player.getUniqueId());
                 statues.put(uuid, StatusManager.Status.TEAMSPEAK);
                 player.openInventory(inventory(player));
                 changeStatus(player);
@@ -132,7 +131,7 @@ public class StatusCommand implements Listener, CommandExecutor {
                             player1.openInventory(inventory(player1));
                             return AnvilGUI.Response.close();
                         })
-                        .text("&cDumm")
+                        .text("&cMarcel Davis")
                         .title("Setze deinen Status. ")
                         .plugin(Main.getPlugin(Main.class))
                         .open(player);
