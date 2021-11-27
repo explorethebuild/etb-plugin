@@ -37,28 +37,3 @@ public class StatusManager {
         return "Error: Mo status was correct DEBUG: " + status.toString();
     }
 }
-
-/**
- *     fun changeStatus(player: Player) {
- *         Bukkit.broadcastMessage(statusManager[player].toString())
- *         if (statusManager[player]?.equals(Statues.MINING) == true) {
- * //            val customName = (ChatColor.GRAY + "[" + ChatColor.BLUE + "MINING" + ChatColor.GRAY + "] " + player.name)
- *             val customName : String = "${KColors.GRAY}[${KColors.CADETBLUE}MINING${KColors.GRAY}] ${KColors.DARKSLATEGRAY}${player.name}"
- *             player.customName = customName
- *             player.setDisplayName(customName)
- *             player.setPlayerListName(customName)
- *         } else if (statusManager[player]?.equals(Statues.AFK) == true) {
- * //            val customName = (ChatColor.GRAY + "[" + ChatColor.DARK_GRAY + "AFK" + ChatColor.GRAY + "] " + player.name)
- *             val customName : String = "${KColors.GRAY}[${KColors.DIMGRAY}AFK${KColors.GRAY}] ${KColors.DARKSLATEGRAY}${player.name}"
- *             player.customName = customName
- *             player.setDisplayName(customName)
- *             player.setPlayerListName(customName)
- *         } else if (statusManager[player]?.equals(Statues.ONLINE) == true) {
- * //            val customName = (ChatColor.GRAY + "[" + ChatColor.DARK_GREEN + "AFK" + ChatColor.GRAY + "] " + player.name)
- *             val customName : String = "${KColors.GRAY}[${KColors.DARKOLIVEGREEN}ONLINE${KColors.GRAY}] ${KColors.DARKSLATEGRAY}$ {player.name}"
- *             player.customName = customName
- *             player.setDisplayName(customName)
- *             player.setPlayerListName(customName)
- *         }
- *     }
- */
