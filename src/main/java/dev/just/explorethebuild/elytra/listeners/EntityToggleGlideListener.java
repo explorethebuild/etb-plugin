@@ -13,6 +13,7 @@ public class EntityToggleGlideListener implements Listener {
             if (player.getFallDistance() == 0) {
                 MoveListener.playerFlying.remove(player);
             } else {
+                if (!player.isGliding()) player.setGliding(true);
                 event.setCancelled(true);
             }
         }
