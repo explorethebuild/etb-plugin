@@ -44,8 +44,7 @@ public class StatusCommand implements Listener, CommandExecutor {
     public static Inventory inventory(Player player) {
         Inventory inv = Bukkit.createInventory(null, 9, ChatColor.GREEN + "Status wählen");
         UUID uuid = player.getUniqueId();
-        ItemStack online = getItem(StatusManager.Status.ONLINE, statues.containsKey(uuid) && statues.get(uuid).equals(StatusManager.Status.ONLINE));
-        inv.setItem(0, online);
+        inv.setItem(0, getItem(StatusManager.Status.ONLINE, statues.containsKey(uuid) && statues.get(uuid).equals(StatusManager.Status.ONLINE)));
         inv.setItem(1, getItem(StatusManager.Status.AFK, statues.containsKey(uuid) && statues.get(uuid).equals(StatusManager.Status.AFK)));
         inv.setItem(2, getItem(StatusManager.Status.MINING, statues.containsKey(uuid) && statues.get(uuid).equals(StatusManager.Status.MINING)));
         inv.setItem(3, getItem(StatusManager.Status.DISCORD, statues.containsKey(uuid) && statues.get(uuid).equals(StatusManager.Status.DISCORD)));
