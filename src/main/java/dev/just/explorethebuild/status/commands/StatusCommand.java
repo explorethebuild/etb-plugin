@@ -126,6 +126,7 @@ public class StatusCommand implements Listener, CommandExecutor {
                             if (s == null) {
                                 return AnvilGUI.Response.text("Bitte trage den Status ein! ");
                             }
+                            statues.remove(player1.getUniqueId());
                             CustomStatusManager.customStatues.put(player1.getUniqueId(), s);
                             changeStatus(player1);
                             player1.openInventory(inventory(player1));
