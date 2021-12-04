@@ -8,6 +8,8 @@ import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.block.BlockBreakEvent;
 import org.bukkit.event.block.BlockPlaceEvent;
+import org.bukkit.event.player.PlayerInteractAtEntityEvent;
+import org.bukkit.event.player.PlayerInteractEvent;
 
 public class BlockBreakListener implements Listener {
     @EventHandler
@@ -21,6 +23,18 @@ public class BlockBreakListener implements Listener {
         if (event.getPlayer().isSneaking() && event.getPlayer().isOp()) {
 
         } else if (isSpawnProtected(event.getBlock())) event.setCancelled(true);
+    }
+    @EventHandler
+    public void onInteract(PlayerInteractEvent event) {
+        if (event.getPlayer().isSneaking() && event.getPlayer().isOp()) {
+
+        } else if (isSpawnProtected(event.getClickedBlock())) event.setCancelled(true);
+    }
+    @EventHandler
+    public void onPlayerInteract(PlayerInteractAtEntityEvent event) {
+        if (event.getPlayer().isSneaking() && event.getPlayer().isOp()) {
+
+        } else if (isSpawnProtected(event.getRightClicked().getLocation().getBlock())) event.setCancelled(true);
     }
 
     private static boolean isSpawnProtected(Block block) {
