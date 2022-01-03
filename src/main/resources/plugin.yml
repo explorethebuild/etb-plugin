@@ -11,3 +11,5 @@ commands:
     description: Setzt den Spawnpunkt.
   settpup:
     description: Setzt den Punkt fürs Teleportieren nach oben.
+  toggleend:
+    description: Ändere den Status des End-Events.

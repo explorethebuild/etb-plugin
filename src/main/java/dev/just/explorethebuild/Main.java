@@ -1,5 +1,6 @@
 package dev.just.explorethebuild;
 
+import dev.just.explorethebuild.commands.ChangeEndEventCommand;
 import dev.just.explorethebuild.elytra.commands.SetSpawnCommand;
 import dev.just.explorethebuild.elytra.listeners.BlockBreakListener;
 import dev.just.explorethebuild.elytra.listeners.EntityToggleGlideListener;
@@ -61,6 +62,7 @@ public final class Main extends JavaPlugin {
         getCommand("start").setExecutor(new StartCommand());
         getCommand("setspawn").setExecutor(new SetSpawnCommand());
         getCommand("settpup").setExecutor(new TeleportUp());
+        getCommand("toggleend").setExecutor(new ChangeEndEventCommand());
     }
 
     private void registerListeners() {
