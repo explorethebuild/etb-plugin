@@ -28,7 +28,7 @@ public class BlockBreakListener implements Listener {
     public void onInteract(PlayerInteractEvent event) {
         if (event.getPlayer().isSneaking() && event.getPlayer().isOp()) {
 
-        } else if (isSpawnProtected(event.getClickedBlock())) event.setCancelled(true);
+        } else if (event.getClickedBlock() != null && isSpawnProtected(event.getClickedBlock())) event.setCancelled(true);
     }
     @EventHandler
     public void onPlayerInteract(PlayerInteractAtEntityEvent event) {
