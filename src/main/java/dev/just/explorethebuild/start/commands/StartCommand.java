@@ -7,6 +7,7 @@ import net.md_5.bungee.api.ChatMessageType;
 import net.md_5.bungee.api.chat.TextComponent;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
+import org.bukkit.GameMode;
 import org.bukkit.Sound;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
@@ -118,7 +119,7 @@ public class StartCommand implements CommandExecutor {
                         player.removePotionEffect(PotionEffectType.JUMP_BOOST);
                         startEvent();
                     }
-                } else if (start_time == 60) {
+                } else if (start_time == 90) {
                     for (Player player : Bukkit.getOnlinePlayers()) {
                         player.stopSound(Sound.MUSIC_DISC_STAL);
                     }
@@ -135,6 +136,7 @@ public class StartCommand implements CommandExecutor {
         Config.set("started", true);
         for (Player player : Bukkit.getOnlinePlayers()) {
             sendTitle(player);
+            player.setGameMode(GameMode.SURVIVAL);
         }
         getWorldBorder().setSize(Config.getDouble("border.started", 20000000), Config.getInt("border.time", 5));
         sendInformation();

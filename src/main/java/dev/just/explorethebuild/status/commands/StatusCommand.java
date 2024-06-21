@@ -4,6 +4,7 @@ import dev.just.explorethebuild.Main;
 import dev.just.explorethebuild.start.IsStarted;
 import dev.just.explorethebuild.status.CustomStatusManager;
 import dev.just.explorethebuild.status.StatusManager;
+import dev.just.explorethebuild.utils.AntiNazi;
 import dev.just.explorethebuild.utils.ItemBuilder;
 import dev.just.explorethebuild.utils.JColors;
 import net.wesjd.anvilgui.AnvilGUI;
@@ -120,16 +121,21 @@ public class StatusCommand implements Listener, CommandExecutor {
             } else if (clickedItem.equals(getCustomStatusItem(false))) {
                 new AnvilGUI.Builder()
                         .onClose(player1 -> {
-                            player.openInventory(inventory(player1));
+                            player.openInventory(inventory(player1.getPlayer()));
                         })
-                        .onComplete((player1, s) -> {
-                            if (s == null) {
+                        .onClick((player1, s) -> {
+                            if (s.getText() == null) {
                                 return AnvilGUI.Response.text("Bitte trage den Status ein! ");
                             }
-                            statues.remove(player1.getUniqueId());
-                            CustomStatusManager.customStatues.put(player1.getUniqueId(), s);
-                            changeStatus(player1);
-                            player1.openInventory(inventory(player1));
+                            String blockMessage = AntiNazi.getBlockReason(s.getText());
+                            if (blockMessage != null) {
+                                AntiNazi.logBlock(s.getText(), s.getPlayer().getName(), "status", blockMessage);
+                                return AnvilGUI.Response.text("Versuche es erneut!");
+                            }
+                            statues.remove(s.getPlayer().getUniqueId());
+                            CustomStatusManager.customStatues.put(s.getPlayer().getUniqueId(), s.getText());
+                            changeStatus(s.getPlayer());
+                            s.getPlayer().openInventory(inventory(s.getPlayer()));
                             return AnvilGUI.Response.close();
                         })
                         .text("&cMarcel Davis")
@@ -147,7 +153,7 @@ public class StatusCommand implements Listener, CommandExecutor {
                 online = new ItemBuilder(Material.GREEN_DYE)
                         .setName(ChatColor.GREEN + "ONLINE")
                         .addLoreLine(JColors.AZURE + "Dies ist dein aktueller Status. ")
-                        .addUnsafeEnchantment(Enchantment.ARROW_DAMAGE, 1)
+                        .addUnsafeEnchantment(Enchantment.AQUA_AFFINITY, 1)
                         .addItemFlag(ItemFlag.HIDE_ATTRIBUTES)
                         .addItemFlag(ItemFlag.HIDE_ENCHANTS)
                         .toItemStack();
@@ -170,7 +176,7 @@ public class StatusCommand implements Listener, CommandExecutor {
                 afk = new ItemBuilder(Material.LIGHT_GRAY_DYE)
                         .setName(ChatColor.GREEN + "AFK")
                         .addLoreLine(JColors.AZURE + "Dies ist dein aktueller Status. ")
-                        .addUnsafeEnchantment(Enchantment.ARROW_DAMAGE, 1)
+                        .addUnsafeEnchantment(Enchantment.AQUA_AFFINITY, 1)
                         .addItemFlag(ItemFlag.HIDE_ATTRIBUTES)
                         .addItemFlag(ItemFlag.HIDE_ENCHANTS)
                         .toItemStack();
@@ -182,7 +188,7 @@ public class StatusCommand implements Listener, CommandExecutor {
                 mining = new ItemBuilder(Material.IRON_PICKAXE)
                         .setName(ChatColor.GREEN + "MINING")
                         .addLoreLine(JColors.AZURE + "Dies ist dein aktueller Status. ")
-                        .addUnsafeEnchantment(Enchantment.ARROW_DAMAGE, 1)
+                        .addUnsafeEnchantment(Enchantment.AQUA_AFFINITY, 1)
                         .addItemFlag(ItemFlag.HIDE_ATTRIBUTES)
                         .addItemFlag(ItemFlag.HIDE_ENCHANTS)
                         .toItemStack();
@@ -199,7 +205,7 @@ public class StatusCommand implements Listener, CommandExecutor {
                 discord = new ItemBuilder(Material.LIGHT_BLUE_WOOL)
                         .setName(ChatColor.GREEN + "DISCORD")
                         .addLoreLine(JColors.AZURE + "Dies ist dein aktueller Status. ")
-                        .addUnsafeEnchantment(Enchantment.ARROW_DAMAGE, 1)
+                        .addUnsafeEnchantment(Enchantment.AQUA_AFFINITY, 1)
                         .addItemFlag(ItemFlag.HIDE_ATTRIBUTES)
                         .addItemFlag(ItemFlag.HIDE_ENCHANTS)
                         .toItemStack();
@@ -216,7 +222,7 @@ public class StatusCommand implements Listener, CommandExecutor {
                 ts = new ItemBuilder(Material.BLUE_WOOL)
                         .setName(ChatColor.GREEN + "TEAMSPEAK")
                         .addLoreLine(JColors.AZURE + "Dies ist dein aktueller Status. ")
-                        .addUnsafeEnchantment(Enchantment.ARROW_DAMAGE, 1)
+                        .addUnsafeEnchantment(Enchantment.AQUA_AFFINITY, 1)
                         .addItemFlag(ItemFlag.HIDE_ATTRIBUTES)
                         .addItemFlag(ItemFlag.HIDE_ENCHANTS)
                         .toItemStack();
@@ -248,7 +254,7 @@ public class StatusCommand implements Listener, CommandExecutor {
             itemStack = new ItemBuilder(Material.OAK_SIGN)
                     .setName(ChatColor.GREEN + "CUSTOM NAME")
                     .addLoreLine(JColors.AZURE + "Du hast einen benutzerdefinierten Status!")
-                    .addUnsafeEnchantment(Enchantment.ARROW_DAMAGE, 1)
+                    .addUnsafeEnchantment(Enchantment.AQUA_AFFINITY, 1)
                     .addItemFlag(ItemFlag.HIDE_ATTRIBUTES)
                     .addItemFlag(ItemFlag.HIDE_ENCHANTS)
                     .toItemStack();
@@ -274,7 +280,7 @@ public class StatusCommand implements Listener, CommandExecutor {
             itemStack = new ItemBuilder(Material.OAK_SIGN)
                     .setName(ChatColor.GREEN + "CUSTOM NAME")
                     .addLoreLine(JColors.AZURE + "Du hast einen benutzerdefinierten Status!")
-                    .addUnsafeEnchantment(Enchantment.ARROW_DAMAGE, 1)
+                    .addUnsafeEnchantment(Enchantment.AQUA_AFFINITY, 1)
                     .addItemFlag(ItemFlag.HIDE_ATTRIBUTES)
                     .addItemFlag(ItemFlag.HIDE_ENCHANTS)
                     .toItemStack();
