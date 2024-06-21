@@ -1,5 +1,6 @@
 package dev.just.explorethebuild;
 
+import au.com.origma.perspectiveapi.v1alpha1.PerspectiveAPI;
 import dev.just.explorethebuild.commands.ChangeEndEventCommand;
 import dev.just.explorethebuild.elytra.commands.SetSpawnCommand;
 import dev.just.explorethebuild.elytra.listeners.BlockBreakListener;
@@ -21,6 +22,8 @@ import org.bukkit.plugin.java.JavaPlugin;
 
 public final class Main extends JavaPlugin {
 
+    public static PerspectiveAPI pAPI = null;
+
     @Override
     public void onLoad() {
         Config.registerConfig();
@@ -31,6 +34,7 @@ public final class Main extends JavaPlugin {
         // Plugin startup logic
         registerCommands();
         registerListeners();
+        enablePerspectiveAPI();
     }
 
     @Override
@@ -76,5 +80,14 @@ public final class Main extends JavaPlugin {
         pluginManager.registerEvents(new AntiMobSpawn(), this);
         pluginManager.registerEvents(new JoinListener(), this);
         pluginManager.registerEvents(new EntityToggleGlideListener(), this);
+    }
+
+    private void enablePerspectiveAPI() {
+        String apiKey = Config.getString("perspectiveAPI.apikey", "INSERT-API-KEY-HERE");
+        if (apiKey.equals("INSERT-API-KEY-HERE")) {
+            return;
+        } else {
+            pAPI = PerspectiveAPI.create(apiKey);
+        }
     }
 }
