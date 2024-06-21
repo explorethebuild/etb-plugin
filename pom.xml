@@ -44,6 +44,14 @@
                                     <pattern>net.wesjd.anvilgui</pattern>
                                     <shadedPattern>dev.just.anvilgui</shadedPattern>
                                 </relocation>
+                                <relocation>
+                                    <pattern>com.github.origma.Google-PerspectiveAPI-Java-Client</pattern>
+                                    <shadedPattern>dev.just.Google-PerspectiveAPI-Java-Client</shadedPattern>
+                                </relocation>
+                                <relocation>
+                                    <pattern>au.com.origma.perspectiveapi</pattern>
+                                    <shadedPattern>dev.just.perspectiveapi</shadedPattern>
+                                </relocation>
                             </relocations>
                         </configuration>
                     </execution>
@@ -94,7 +102,7 @@
         <dependency>
             <groupId>net.wesjd</groupId>
             <artifactId>anvilgui</artifactId>
-            <version>1.6.3-SNAPSHOT</version>
+            <version>1.9.5-SNAPSHOT</version>
         </dependency>
         <dependency>
             <groupId>com.github.origma</groupId>
