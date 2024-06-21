@@ -35,6 +35,10 @@ public final class Main extends JavaPlugin {
         registerCommands();
         registerListeners();
         enablePerspectiveAPI();
+        // Shutdown server if run as GH Action
+        if (System.getenv("GH_ACTIONS") != null && System.getenv("GH_ACTIONS").equals("true")) {
+            Bukkit.getScheduler().runTaskLater(this, Bukkit::shutdown, 20 * 30);
+        }
     }
 
     @Override
