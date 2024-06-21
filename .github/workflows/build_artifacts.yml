@@ -37,7 +37,7 @@ jobs:
       - name: Create plugins folder
         run: mkdir plugins
       - name: Copy plugin to plugins folder
-        run: cp ${{ github.workspace }}/plugin_jar/ExploreTheBuild*.jar plugins/
+        run: cp ExploreTheBuild*.jar plugins/
       - name: Run PaperMC
         run: java -jar paperclip.jar
         timeout-minutes: 3
