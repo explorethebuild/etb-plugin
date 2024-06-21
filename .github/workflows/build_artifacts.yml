@@ -15,3 +15,31 @@ jobs:
       - uses: actions/upload-artifact@v4
         with:
           path: target/*.jar
+          name: plugin_jar
+  test:
+    name: Test using spigot
+    runs-on: ubuntu-latest
+    needs: build
+    steps:
+      - uses: actions/download-artifact@v4
+        with:
+          name: plugin_jar
+      - uses: actions/setup-java@v4
+        with:
+          distribution: "adopt"
+          java-version: "21"
+      - name: Download PaperMC
+        uses: just-dev-creator/install-paper@v1.0.1
+        with:
+          path: './paperclip.jar'
+      - name: Agree to EULA
+        run: echo "eula=true" > eula.txt
+      - name: Create plugins folder
+        run: mkdir plugins
+      - name: Copy plugin to plugins folder
+        run: cp ${{ github.workspace }}/plugin_jar/ExploreTheBuild*.jar plugins/
+      - name: Run PaperMC
+        run: java -jar paperclip.jar
+        timeout-minutes: 3
+        env:
+          GH_ACTIONS: true
