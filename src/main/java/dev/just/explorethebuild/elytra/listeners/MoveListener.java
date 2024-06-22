@@ -12,7 +12,7 @@ import java.util.ArrayList;
 
 public class MoveListener implements Listener {
     public static ArrayList<Player> playerFlying = new ArrayList<>();
-    private boolean isInSpawnAre(Location location) {
+    private boolean isInSpawnArea(Location location) {
         if (location.getWorld().getName().equalsIgnoreCase("world")) {
             if (location.getX() > Config.getInt("spawn.x.min") &&
             location.getX() < Config.getInt("spawn.x.max")) {
@@ -30,7 +30,7 @@ public class MoveListener implements Listener {
     @EventHandler
     public void onMove(PlayerMoveEvent event) {
         if (!IsStarted.isStarted) return;
-        if (isInSpawnAre(event.getPlayer().getLocation())) {
+        if (isInSpawnArea(event.getPlayer().getLocation())) {
             if (event.getPlayer().getFallDistance() > 0) {
                 Player player = event.getPlayer();
                 player.setGliding(true);

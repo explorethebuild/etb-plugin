@@ -119,7 +119,7 @@ public class StartCommand implements CommandExecutor {
                         player.removePotionEffect(PotionEffectType.JUMP_BOOST);
                         startEvent();
                     }
-                } else if (start_time == 90) {
+                } else if (start_time == 70) {
                     for (Player player : Bukkit.getOnlinePlayers()) {
                         player.stopSound(Sound.MUSIC_DISC_STAL);
                     }
